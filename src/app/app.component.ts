@@ -6,7 +6,7 @@ import { BoardComponent } from './board/board.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,BoardComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

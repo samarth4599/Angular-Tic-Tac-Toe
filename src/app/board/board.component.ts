@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { SquareComponent } from '../square/square.component';
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
+import { MagnifierDirective } from '../magnifier.directive';
+import { ClockService } from '../clock.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [SquareComponent,NgIf,NgFor],
+  imports: [SquareComponent,NgIf,NgFor,NgClass,MagnifierDirective,RouterLink],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss'
 })
@@ -13,6 +16,10 @@ export class BoardComponent implements OnInit {
   squares: any[] = [];
   xIsNext: boolean=false
   winner: string|null=null
+
+  public cs= inject(ClockService)
+
+  // constructor(public cs: ClockService){}
 
   ngOnInit(): void {
       this.newGame()

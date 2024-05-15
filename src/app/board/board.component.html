@@ -1,7 +1,17 @@
-<h1>Current Player: {{player}}</h1>
+<h1>Current Player: {{player}} {{cs.tick}}</h1>
 <button (click)="newGame()">Start New Game</button>
-<h2 *ngIf="winner">Player {{winner}} won the game</h2>
+<a
+      title="details"
+      [routerLink]="['/products']">
+      Navigate to Products
+    </a>
+<h2  *ngIf="winner">Player {{winner}} won the game</h2>
+
+<img [src]="'https://play-lh.googleusercontent.com/IkcyuPcrQlDsv62dwGqteL_0K_Rt2BUTXfV3_vR4VmAGo-WSCfT2FgHdCBUsMw3TPGU'" appMagnifier/>
 
 <main>
-    <app-square *ngFor="let val of squares; let i=index" [value]="val" (click)="makeMove(i)"></app-square>
+    <app-square [ngClass]="{
+        'green':i%2===0,
+        'red':i%2!==0
+    }" *ngFor="let val of squares; let i=index" [value]="val" (click)="makeMove(i)"></app-square>
 </main>
